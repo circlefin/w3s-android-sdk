@@ -1,42 +1,29 @@
 # w3s-android-sdk
 
 ## Installation
-
-Add the maven repository to your gradle file:
-
+Add the maven repository to your gradle file. It's suggested that load settings from `local.properties`:
 ```gradle
 repositories {
 	...
 	maven { 
-		url 'https://maven.pkg.github.com/circlefin/w3s-android-sdk' 
-		credentials {
-			username '<GITHUB_USERNAME>'
-			password '<GITHUB_PAT>' // Fine-grained personal access tokens or classic with package write permission
-		}
-	}
-}
-```
-It's suggest that load settings from `local.proprties`.
-```gradle
-repositories {
-	...
-	maven { 
-        Properties properties = new Properties()
-        properties.load(new File(rootDir.absolutePath + "/local.properties").newDataInputStream()) // load local.properties
+        	Properties properties = new Properties()
+		// Load local.properties.
+        	properties.load(new File(rootDir.absolutePath + "/local.properties").newDataInputStream())
+			
 		url properties.getProperty('pwsdk.maven.url')
 		credentials {
-            username properties.getProperty('pwsdk.maven.username')
-            password properties.getProperty('pwsdk.maven.password')
+        		username properties.getProperty('pwsdk.maven.username')
+        		password properties.getProperty('pwsdk.maven.password')
 		}
 	}
 }
 ```
-local.properties
-```
-...
+Add the maven setting values in `local.properties` file:
+```properties
 pwsdk.maven.url=https://maven.pkg.github.com/circlefin/w3s-android-sdk
 pwsdk.maven.username=<GITHUB_USERNAME>
-pwsdk.maven.password=<GITHUB_PAT>
+# Fine-grained personal access tokens or classic with package write permission.
+pwsdk.maven.password=<GITHUB_PAT> 
 
 ```
 
