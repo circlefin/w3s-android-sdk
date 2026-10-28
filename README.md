@@ -7,7 +7,7 @@ repositories {
 	...
 	maven { 
         	Properties properties = new Properties()
-		// Load local.properties.
+		// Load local.properties
         	properties.load(new File(rootDir.absolutePath + "/local.properties").newDataInputStream())
 			
 		url properties.getProperty('pwsdk.maven.url')
